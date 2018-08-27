@@ -1,0 +1,15 @@
+.Home-Quiz-Button {
+    background-color: rgb(159, 209, 159);
+    padding: 43px;
+    border-radius: 5px;
+}
+
+.Home {
+    background-color: #89A788;
+    height: 100vh;
+    text-align: center;
+}
+
+.Home h2 {
+    margin-top: 0;
+}
