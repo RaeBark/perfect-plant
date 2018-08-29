@@ -1,15 +1,22 @@
 .Home-Quiz-Button {
-    background-color: rgb(159, 209, 159);
+    background-color: #89A788;
     padding: 43px;
     border-radius: 5px;
 }
 
 .Home {
-    background-color: #89A788;
+    background-image: url("https://i.imgur.com/TiYKIfG.png");
     height: 100vh;
     text-align: center;
+    color: white;
 }
 
 .Home h2 {
     margin-top: 0;
+}
+
+.Home-Title {
+    font-family: 'Yellowtail', cursive;
+    font-size: 100px;
+    text-shadow: 2px 2px 2px #3A6D6E;
 }

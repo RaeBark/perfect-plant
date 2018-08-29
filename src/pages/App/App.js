@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { 
-  Link, 
   BrowserRouter as Router,
   Route,
   Switch
@@ -12,12 +11,22 @@ import LoginPage from '../LoginPage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 import NavBar from '../../components/NavBar/NavBar';
 import QuizPage from '../QuizPage/QuizPage';
+import CartPage from '../CartPage/CartPage';
+import SavedPlants from '../SavedPlants/SavedPlants';
+import PlantsPage from '../PlantsPage/PlantsPage';
+import plantAPI from '../../utils/plantAPI';
+import orderAPI from '../../utils/orderAPI';
+
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      plants: [],
+      user: {},
+      cart: null
+
     }
   }
 
@@ -38,17 +47,31 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  handleAddItem = (plantId) => {
+    plantAPI.addPlant(plantId)
+      .then(cart => {
+        this.setState({cart})
+      });
+  };
+
   /*---------- Lifecycle Methods ----------*/
 
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
+    plantAPI.index().then(plants => {
+      this.setState({plants});
+    orderAPI.getCart()
+      .then(cart => this.setState({ cart }))
+      // console.log(this.state.plants);
+    });
   }
+
 
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Router>
           <React.Fragment>
             <NavBar 
@@ -73,6 +96,21 @@ class App extends Component {
               }/>
               <Route exact path="/quiz" render={(props) => 
                 <QuizPage {...props} 
+                />
+              }/>
+              <Route exact path="/cart" render={(props) => 
+                <CartPage {...props}  handleAddItem={this.handleAddItem} user={this.state.user} cart={this.state.cart}
+                />
+              }/>
+              <Route exact path="/saved_plants" render={(props) => 
+                <SavedPlants {...props} 
+                />
+              }/>
+              <Route exact path="/plants" render={(props) => 
+                <PlantsPage 
+                  {...props} 
+                  plants={this.state.plants}
+                  handleAddItem={this.handleAddItem}
                 />
               }/>
             </Switch>

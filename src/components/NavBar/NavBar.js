@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Link
 } from 'react-router-dom';
@@ -7,9 +7,11 @@ import './NavBar.css'
 const NavBar = (props) => {
   let nav = props.user ? 
     <div className="NavBar">
-      <Link to='/' className='NavBar-link' >Perfect Plant</Link>
+      <Link to='/' className='NavBar-link NavBar-Title' >Perfect Plant</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <span className='NavBar-welcome'>welcome, {props.user.name}</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to='/saved_plants' className='NavBar-link'>saved plants</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <Link to='/cart' className='NavBar-link'>cart</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -17,7 +19,7 @@ const NavBar = (props) => {
     </div>
     :
     <div className="NavBar">
-      <Link to='/' className='NavBar-link' >Perfect Plant</Link>
+      <Link to='/' className='NavBar-link NavBar-Title' >Perfect Plant</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <Link to='/login' className='NavBar-link'>log in</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;

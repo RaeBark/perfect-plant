@@ -1,5 +1,5 @@
 .NavBar {
-    background-color: #496F6E;
+    background-color:#3A6D6E;
     color: white;
     padding: 10px 0;
 }
@@ -7,4 +7,9 @@
 .NavBar a {
     color: white;
     height: 30px;
+}
+
+.NavBar-Title {
+    font-family: 'Yellowtail', cursive;
+    font-size: 25px;
 }
