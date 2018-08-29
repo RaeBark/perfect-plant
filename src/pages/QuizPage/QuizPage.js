@@ -21,43 +21,14 @@ class QuizPage extends Component {
             humidity: '',
         }
         this.handleNextButton = this.handleNextButton.bind(this);
-        // this.handleUpdateExpertiseLevel = this.handleUpdateExpertiseLevel.bind(this);
-        // this.handleUpdateMoisture = this.handleUpdateMoisture.bind(this);
-        // this.handleUpdateMaintenance = this.handleUpdateMaintenance.bind(this);
-        // this.handleUpdateSunlight = this.handleUpdateExpertiseLevel.bind(this);
-        // this.handleUpdateSize = this.handleUpdateSize.bind(this);
-        // this.handleUpdateHumidity = this.handleUpdateHumidity.bind(this);
     }
     
     
-    // handleUpdateMoisture = () => {
-    //     this.setState({moisture})
-    // }
-    
-    // handleUpdateSunlight = () => {
-    //     this.setState({sunlight})
-    // }
-    
-    // handleUpdateMaintenance = () => {
-    //     this.setState({maintenance})
-    // }
-    
-    // handleUpdateSize = () => {
-    //     this.setState({size})
-    // }
-    
-    // handleUpdateExpertiseLevel = () => {
-    //     this.setState({expertiseLevel})
-    // }
-    
-    // handleUpdateHumidity = () => {
-    //     this.setState({humidity})
-    // }
-    
-    
-    
-    
-    
+    handleSelection = (field, e) => {
+        this.setState({
+          [field]: e
+        });
+    }
     
     
     handleNextButton = () => {
@@ -75,16 +46,13 @@ class QuizPage extends Component {
     render() {
         var steps = [
             <Step1 
-                // handleUpdateMaintenance={this.handleUpdateMaintenance}
-                // handleUpdateSunlight={this.handleUpdateSunlight}
+                handleSelection={this.handleSelection}
             />,
             <Step2 
-                // handleUpdateMoisture={this.handleUpdateMoisture}
-                // handleUpdateHumidity={this.handleUpdateHumidity}
+                handleSelection={this.handleSelection}
             />,
             <Step3 
-                // handleUpdateSize={this.handleUpdateSize}
-                // handleUpdateExpertiseLevel={this.handleUpdateExpertiseLevel}
+                handleSelection={this.handleSelection}
             />
         ]
         return (
