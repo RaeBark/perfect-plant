@@ -64,7 +64,8 @@ class QuizPage extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                {this.state.quizStep !== 0 ?
+                <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button> : ''}
                 {this.state.quizStep === 2 ?
                 <button className="btn-success btn-lg" onClick={this.handleNextButton}>find my <br/>Perfect Plant!</button> :
                 <button className="btn-success btn-lg" onClick={this.handleNextButton}>next</button> }

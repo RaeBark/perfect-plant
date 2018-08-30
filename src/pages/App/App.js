@@ -16,6 +16,7 @@ import SavedPlants from '../SavedPlants/SavedPlants';
 import PlantsPage from '../PlantsPage/PlantsPage';
 import plantAPI from '../../utils/plantAPI';
 import orderAPI from '../../utils/orderAPI';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 
 
@@ -112,6 +113,9 @@ class App extends Component {
                   plants={this.state.plants}
                   handleAddItem={this.handleAddItem}
                 />
+              }/>
+              <Route exact path="/checkout" render={() => 
+                <CheckoutPage/>
               }/>
             </Switch>
           </React.Fragment>
