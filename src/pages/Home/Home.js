@@ -14,8 +14,8 @@ const Home = (props) => {
             <br />
             <br />
             <br />
-            <Link to='/quiz' className="Home-Quiz-Button">take the quiz</Link><br/><br/>
-            <img src="http://www.barborenovables.es/images/plant12.png" alt="logo" style={{height: 400, width:400}}></img><br/>
+            <Link to='/quiz' className="Home-Quiz-Button">take the quiz</Link>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <Link to='/plants'>or browse all plants</Link>
         </div>
     );

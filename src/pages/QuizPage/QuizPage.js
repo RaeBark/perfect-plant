@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './QuizPage.css';
 import Step1 from '../../components/Step1/Step1';
 import Step2 from '../../components/Step2/Step2';
@@ -41,6 +42,9 @@ class QuizPage extends Component {
         this.setState({quizStep});
     }
     
+    handleFindPlants = () => {
+        
+    }
     
     
     render() {
@@ -67,7 +71,7 @@ class QuizPage extends Component {
                 {this.state.quizStep !== 0 ?
                 <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button> : ''}
                 {this.state.quizStep === 2 ?
-                <button className="btn-success btn-lg" onClick={this.handleNextButton}>find my <br/>Perfect Plant!</button> :
+                <Link to={{pathname:"/plants" , state:this.state}} onClick={this.handleFindPlants}>find my Perfect Plant!</Link> :
                 <button className="btn-success btn-lg" onClick={this.handleNextButton}>next</button> }
                 <br/>
 
