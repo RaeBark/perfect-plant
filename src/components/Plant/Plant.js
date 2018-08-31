@@ -1,7 +1,9 @@
 import React from 'react';
 import './Plant.css';
+import queryString from 'query-string';
 
 class Plant extends React.Component {
+
 
     render() {
         // console.log(this.props.plants)

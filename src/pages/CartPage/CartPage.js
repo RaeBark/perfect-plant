@@ -5,7 +5,7 @@ const CartPage = (props) => {
     return (
         <div>
             {props.cart &&
-                <Cart cart={props.cart}/>
+                <Cart cart={props.cart} handleRemoveItem={props.handleRemoveItem} handleAddItem={props.handleAddItem}/>
             }
         </div>
     )

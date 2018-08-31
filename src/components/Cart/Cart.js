@@ -8,7 +8,10 @@ const Cart = (props) => {
     return (
         <div>
             <h1>Cart</h1>
-            <CartItems cart={props.cart} />
+            <CartItems 
+            handleRemoveItem={props.handleRemoveItem} 
+            handleAddItem={props.handleAddItem}
+            cart={props.cart} />
             <h3>Total: ${total}</h3>
             <Link to='/checkout' className="Cart-Checkout-Button">checkout</Link>
         </div>

@@ -22,6 +22,32 @@ function index() {
       })
       .then(cart => cart);
   }
+
+  function matchPlants(query) {
+    // console.log(JSON.stringify(query));  
+    var options = getAuthRequestOptions('POST');
+    options.body = JSON.stringify(query);
+    return fetch(BASE_URL + 'filter', options)
+    .then(res => {
+      if (res.ok) return res.json();
+        throw new Error('Error filtering plants');
+      })
+    .then(plants => plants);
+  }
+
+
+  function removePlant(plantId) {
+    var options = getAuthRequestOptions('DELETE');
+    return fetch(`${BASE_URL}cart/${plantId}`, options)
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Error removing Plant to Cart');
+      })
+      .then(cart => cart);
+  } 
+
+
+
   
   /*----- Helper Functions -----*/
   
@@ -37,5 +63,7 @@ function index() {
 
 export default {
     index,
-    addPlant
+    addPlant,
+    matchPlants,
+    removePlant
 }

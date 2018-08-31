@@ -54,7 +54,14 @@ class App extends Component {
         this.setState({cart})
       });
   };
-
+  
+  handleRemoveItem = (plantId) => {
+    console.log(plantId);
+    plantAPI.removePlant(plantId)
+      .then(cart => {
+        this.setState({cart})
+      });
+  };
   /*---------- Lifecycle Methods ----------*/
 
   componentDidMount() {
@@ -62,9 +69,10 @@ class App extends Component {
     this.setState({user});
     plantAPI.index().then(plants => {
       this.setState({plants});
-    orderAPI.getCart()
-      .then(cart => this.setState({ cart }))
-      // console.log(this.state.plants);
+    if (user) {
+      orderAPI.getCart()
+        .then(cart => this.setState({ cart }))
+      }
     });
   }
 
@@ -100,7 +108,12 @@ class App extends Component {
                 />
               }/>
               <Route exact path="/cart" render={(props) => 
-                <CartPage {...props}  handleAddItem={this.handleAddItem} user={this.state.user} cart={this.state.cart}
+                <CartPage 
+                {...props}  
+                handleRemoveItem={this.handleRemoveItem}
+                handleAddItem={this.handleAddItem} 
+                user={this.state.user} 
+                cart={this.state.cart}
                 />
               }/>
               <Route exact path="/saved_plants" render={(props) => 
