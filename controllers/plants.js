@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 
 
 function index(req,res) {
-    Plant.find({}, function(err, plant) {
+    Plant.find({}, function(err, plants) {
         if(err) return res.status(400).json(err);
-        res.json(plant);
+        res.json(plants);
     });
 }
 

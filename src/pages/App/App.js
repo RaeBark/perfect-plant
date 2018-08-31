@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { 
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import './App.css';
 import Home from '../Home/Home';
@@ -69,11 +70,11 @@ class App extends Component {
     this.setState({user});
     plantAPI.index().then(plants => {
       this.setState({plants});
+    });
     if (user) {
       orderAPI.getCart()
-        .then(cart => this.setState({ cart }))
-      }
-    });
+        .then(cart => this.setState({ cart }));
+    }
   }
 
 
@@ -94,6 +95,7 @@ class App extends Component {
               }/>
               <Route exact path="/login" render={(props) => 
                 <LoginPage 
+                  message=""
                   {...props} 
                   handleLogin={this.handleLogin}
                 />
@@ -103,32 +105,52 @@ class App extends Component {
                 handleSignup={this.handleSignup}
                 />
               }/>
-              <Route exact path="/quiz" render={(props) => 
-                <QuizPage {...props} 
-                />
+              <Route exact path="/quiz" render={(props) => (
+                userService.getUser() ?
+                <QuizPage {...props}/>
+                 :
+                <Redirect to='/login' />
+              )
+
+                
               }/>
-              <Route exact path="/cart" render={(props) => 
+              <Route exact path="/cart" render={(props) => (
+                userService.getUser() ?
                 <CartPage 
-                {...props}  
-                handleRemoveItem={this.handleRemoveItem}
-                handleAddItem={this.handleAddItem} 
-                user={this.state.user} 
-                cart={this.state.cart}
+                  {...props}  
+                  handleRemoveItem={this.handleRemoveItem}
+                  handleAddItem={this.handleAddItem} 
+                  user={this.state.user} 
+                  cart={this.state.cart}
                 />
+                 :
+                <Redirect to={{pathname: '/login', message:"Please log in first!"}}/>
+              )   
               }/>
-              <Route exact path="/saved_plants" render={(props) => 
-                <SavedPlants {...props} 
-                />
+              <Route exact path="/saved_plants" render={(props) => (
+                userService.getUser() ?
+                <SavedPlants {...props} />
+                 :
+                <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
+              )
               }/>
-              <Route exact path="/plants" render={(props) => 
+              <Route exact path="/plants" render={(props) => (
+                userService.getUser() ?
                 <PlantsPage 
                   {...props} 
                   plants={this.state.plants}
                   handleAddItem={this.handleAddItem}
                 />
+                 :
+                <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
+              )    
               }/>
-              <Route exact path="/checkout" render={() => 
+              <Route exact path="/checkout" render={() => (
+                userService.getUser() ?
                 <CheckoutPage/>
+                 :
+                <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
+              ) 
               }/>
             </Switch>
           </React.Fragment>

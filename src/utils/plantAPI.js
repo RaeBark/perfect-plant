@@ -4,13 +4,13 @@ const BASE_URL = '/api/plants/';
 
 
 function index() {
-    return fetch(BASE_URL, getAuthRequestOptions('GET'))
-      .then(res => {
-        if (res.ok) return res.json();
-        throw new Error("Bad Credentials");
-      })
-      .then(plants => plants);
-  }
+  return fetch(BASE_URL)
+    .then(res => {
+      if (res.ok) return res.json();
+      throw new Error("Bad Credentials");
+    })
+    .then(plants => plants);
+}
 
   function addPlant(plantId) {
     var options = getAuthRequestOptions('POST');
