@@ -26,9 +26,10 @@ class App extends Component {
     super(props);
     this.state = {
       plants: [],
+      allPlants: [],
+      filteredPlants: [],
       user: {},
       cart: null
-
     }
   }
 
@@ -63,13 +64,17 @@ class App extends Component {
         this.setState({cart})
       });
   };
+
+  handleFilteredPlants = () => {
+    console.log('What up, G?');
+  }
   /*---------- Lifecycle Methods ----------*/
 
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
     plantAPI.index().then(plants => {
-      this.setState({plants});
+      this.setState({plants: plants, allPlants: plants});
     });
     if (user) {
       orderAPI.getCart()
@@ -80,6 +85,9 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.allPlants)
+    console.log(this.state.plants)
+    console.log(this.state.filteredPlants)
     return (
       <div className="App">
         <Router>
@@ -91,6 +99,7 @@ class App extends Component {
             <Switch> 
               <Route exact path="/" render={() => 
                 <Home 
+                allPlants={this.state.allPlants}
                 />
               }/>
               <Route exact path="/login" render={(props) => 
@@ -109,7 +118,7 @@ class App extends Component {
                 userService.getUser() ?
                 <QuizPage {...props}/>
                  :
-                <Redirect to='/login' />
+                 <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
               )
 
                 
@@ -140,6 +149,7 @@ class App extends Component {
                   {...props} 
                   plants={this.state.plants}
                   handleAddItem={this.handleAddItem}
+                  handleFilteredPlants={this.handleFilteredPlants}
                 />
                  :
                 <Redirect to={{pathname: '/login', message:"Please log in first!"}} />

@@ -16,7 +16,7 @@ const Home = (props) => {
             <br />
             <Link to='/quiz' className="Home-Quiz-Button">take the quiz</Link>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <Link to='/plants'>or browse all plants</Link>
+            <Link to={{pathname:'/plants', allPlants:props.allPlants}}>or browse all plants</Link>
         </div>
     );
 }

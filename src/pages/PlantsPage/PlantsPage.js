@@ -25,18 +25,15 @@ class PlantsPage extends React.Component {
             }
             plantAPI.matchPlants(queryString).then(plants => {
                 this.setState({plants: plants, filter: true});
-                console.log(plants);
+                this.props.handleFilteredPlants();
             })
         }
     }
 
 
     render() {
+        console.log(this.props.location.allPlants)
         var plants;
-        console.log(this.props.plants);
-        console.log(this.state.plants);
-
-
         
         if (this.state.filter) {
             plants = this.state.plants.map(plant => {
@@ -49,7 +46,6 @@ class PlantsPage extends React.Component {
                 );
             })
         } else {
-            console.log(this.props.plants)
             plants = this.props.plants.map(plant => {
                 return (
                     <Plant 
@@ -60,18 +56,6 @@ class PlantsPage extends React.Component {
                 );
             })
         }
-
-
-
-
-
-        // var plants = this.state.plants === 0 ? this.props.plants : this.state.plants;
-
-        // if (this.state.plants === 0) {
-        //     plants = this.props.plants;
-        // } else {
-        //     plants = this.state.plants;
-        console.log(plants);
 
         return (
             <div className="PlantsPage">

@@ -1,6 +1,6 @@
 var Plant = require('../models/plant');
 var Order = require('../models/order');
-var mongoose = require('mongoose');
+
 
 
 function index(req,res) {

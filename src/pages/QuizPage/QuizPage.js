@@ -42,21 +42,20 @@ class QuizPage extends Component {
         this.setState({quizStep});
     }
     
-    handleFindPlants = () => {
-        
-    }
-    
     
     render() {
         var steps = [
             <Step1 
                 handleSelection={this.handleSelection}
-            />,
-            <Step2 
+                {...this.state}
+                />,
+                <Step2 
                 handleSelection={this.handleSelection}
-            />,
-            <Step3 
+                {...this.state}
+                />,
+                <Step3 
                 handleSelection={this.handleSelection}
+                {...this.state}
             />
         ]
         return (
