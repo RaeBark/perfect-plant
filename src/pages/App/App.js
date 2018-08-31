@@ -71,6 +71,10 @@ class App extends Component {
     this.props.history.push(`/plants/${plant._id}`);
   }
 
+  clearSearchedFlag = () => {
+    if (this.state.searched) this.setState({searched: false});
+  }
+
   /*---------- Lifecycle Methods ----------*/
   componentDidMount() {
     let user = userService.getUser();
@@ -95,6 +99,7 @@ class App extends Component {
             <Switch> 
               <Route exact path="/" render={() => 
                 <Home 
+                  clearSearchedFlag={this.clearSearchedFlag}
                 />
               }/>
               <Route exact path="/login" render={(props) => 

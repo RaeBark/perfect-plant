@@ -4,6 +4,7 @@ import './Home.css'
 
 
 const Home = (props) => {
+    props.clearSearchedFlag();
     return (
         <div className="Home">
             <div className="Home-Description">
