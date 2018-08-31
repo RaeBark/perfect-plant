@@ -42,6 +42,14 @@ class QuizPage extends Component {
             this.props.handleFilteredPlants(plants);
         });
     }
+
+    handleCheckQuiz = () => {
+        if (!this.state.moisture || !this.state.sunlight || !this.state.maintenance|| !this.state.size|| !this.state.humidity|| !this.state.expertiseLevel) {
+            return "Please complete the quiz!";
+        } else {
+            return 'find my Perfect Plant!'
+        }
+    }
     
     render() {
         var steps = [
@@ -70,7 +78,7 @@ class QuizPage extends Component {
                 {this.state.quizStep !== 0 ?
                 <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button> : ''}
                 {this.state.quizStep === 2 ?
-                <button onClick={this.handleSearchButton}>find my Perfect Plant!</button> :
+                <button onClick={this.handleSearchButton} disabled={!this.state.moisture || !this.state.sunlight || !this.state.maintenance|| !this.state.size|| !this.state.humidity|| !this.state.expertiseLevel}>{this.handleCheckQuiz()}</button> :
                 <button className="btn-success btn-lg" onClick={this.handleNextButton}>next</button> }
                 <br/>
 
