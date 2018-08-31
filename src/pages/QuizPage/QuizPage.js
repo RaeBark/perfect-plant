@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
 import './QuizPage.css';
 import Step1 from '../../components/Step1/Step1';
 import Step2 from '../../components/Step2/Step2';
 import Step3 from '../../components/Step3/Step3';
-
-
-
-
+import plantAPI from '../../utils/plantAPI';
 
 class QuizPage extends Component {
     constructor() {
@@ -21,17 +18,14 @@ class QuizPage extends Component {
             expertiseLevel: '',
             humidity: '',
         }
-        this.handleNextButton = this.handleNextButton.bind(this);
-    }
-    
+    } 
     
     handleSelection = (field, e) => {
         this.setState({
           [field]: e
         });
     }
-    
-    
+     
     handleNextButton = () => {
         var quizStep = this.state.quizStep < 2 ? this.state.quizStep += 1 : this.state.quizStep;
         this.setState({quizStep});
@@ -41,7 +35,13 @@ class QuizPage extends Component {
         var quizStep = this.state.quizStep > 0 ? this.state.quizStep -= 1: this.state.quizStep;
         this.setState({quizStep});
     }
-    
+
+    handleSearchButton = () => {
+        delete this.state.quizStep;
+        plantAPI.matchPlants(this.state).then(plants => {
+            this.props.handleFilteredPlants(plants);
+        });
+    }
     
     render() {
         var steps = [
@@ -70,7 +70,7 @@ class QuizPage extends Component {
                 {this.state.quizStep !== 0 ?
                 <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button> : ''}
                 {this.state.quizStep === 2 ?
-                <Link to={{pathname:"/plants" , state:this.state}} onClick={this.handleFindPlants}>find my Perfect Plant!</Link> :
+                <button onClick={this.handleSearchButton}>find my Perfect Plant!</button> :
                 <button className="btn-success btn-lg" onClick={this.handleNextButton}>next</button> }
                 <br/>
 

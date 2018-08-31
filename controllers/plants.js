@@ -27,6 +27,13 @@ function removePlant(req, res) {
     });
 }
 
+function getPlant(req,res) {
+    Plant.findById(req.params.id, function(err, plant) {
+      if (err) return res.status(400).json(err);
+      res.json(plant);
+    })
+  }
+
 function matchPlants (req, res) {
 
     Plant.find({}, function(err, plant) {
@@ -48,5 +55,6 @@ module.exports = {
     index,
     addPlant,
     matchPlants,
-    removePlant
+    removePlant,
+    getPlant
 }

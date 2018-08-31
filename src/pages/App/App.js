@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { 
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect
@@ -18,25 +17,22 @@ import PlantsPage from '../PlantsPage/PlantsPage';
 import plantAPI from '../../utils/plantAPI';
 import orderAPI from '../../utils/orderAPI';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
-
-
+import ShowPlantPage from '../ShowPlantPage/ShowPlantPage';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      plants: [],
       allPlants: [],
       filteredPlants: [],
+      searched: false,
       user: {},
-      cart: null
+      cart: null,
+      plant: ''
     }
   }
 
 /*---------- Helper Methods ----------*/
-
-
-
   handleSignup = () => {
     this.setState({user : userService.getUser()});
   }
@@ -58,23 +54,29 @@ class App extends Component {
   };
   
   handleRemoveItem = (plantId) => {
-    console.log(plantId);
     plantAPI.removePlant(plantId)
       .then(cart => {
         this.setState({cart})
       });
   };
 
-  handleFilteredPlants = () => {
-    console.log('What up, G?');
+  handleFilteredPlants = (plants) => {
+    this.setState({filteredPlants: plants, searched: true}, function() {
+      this.props.history.push('/plants');
+    });
   }
-  /*---------- Lifecycle Methods ----------*/
 
+  handleSelectedPlant = (plant) => {
+    this.setState({plant});
+    this.props.history.push(`/plants/${plant._id}`);
+  }
+
+  /*---------- Lifecycle Methods ----------*/
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
     plantAPI.index().then(plants => {
-      this.setState({plants: plants, allPlants: plants});
+      this.setState({allPlants: plants});
     });
     if (user) {
       orderAPI.getCart()
@@ -82,16 +84,10 @@ class App extends Component {
     }
   }
 
-
-
   render() {
-    console.log(this.state.allPlants)
-    console.log(this.state.plants)
-    console.log(this.state.filteredPlants)
+
     return (
       <div className="App">
-        <Router>
-          <React.Fragment>
             <NavBar 
                   user={this.state.user}
                   handleLogout={this.handleLogout}
@@ -99,7 +95,6 @@ class App extends Component {
             <Switch> 
               <Route exact path="/" render={() => 
                 <Home 
-                allPlants={this.state.allPlants}
                 />
               }/>
               <Route exact path="/login" render={(props) => 
@@ -116,9 +111,10 @@ class App extends Component {
               }/>
               <Route exact path="/quiz" render={(props) => (
                 userService.getUser() ?
-                <QuizPage {...props}/>
-                 :
-                 <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
+                <QuizPage {...props}
+                  handleFilteredPlants={this.handleFilteredPlants}/>
+                :
+                  <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
               )
 
                 
@@ -146,10 +142,13 @@ class App extends Component {
               <Route exact path="/plants" render={(props) => (
                 userService.getUser() ?
                 <PlantsPage 
-                  {...props} 
-                  plants={this.state.plants}
+                  {...props}
+                  searched={this.state.searched}
+                  filteredPlants={this.state.filteredPlants}
+                  allPlants={this.state.allPlants}
                   handleAddItem={this.handleAddItem}
-                  handleFilteredPlants={this.handleFilteredPlants}
+                  handleSelectedPlant={this.handleSelectedPlant}
+                  plant={this.state.plant}
                 />
                  :
                 <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
@@ -162,10 +161,17 @@ class App extends Component {
                 <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
               ) 
               }/>
+              <Route path="/plants/:id" render={(props) => (
+                userService.getUser() ?
+                <ShowPlantPage {...props}
+                plant={this.state.plant}
+                handleAddItem={this.handleAddItem}/>
+                
+                 :
+                <Redirect to={{pathname: '/login', message:"Please log in first!"}} />
+              ) 
+              }/>
             </Switch>
-          </React.Fragment>
-        </Router>
-
       </div>
     );
   }

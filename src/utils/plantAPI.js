@@ -46,7 +46,14 @@ function index() {
       .then(cart => cart);
   } 
 
-
+  function getPlant(plantId) {
+    return fetch(BASE_URL + plantId)
+    .then(res => {
+      if (res.ok) return res.json();
+      throw new Error('Bad Credentials');
+    })
+    .then(plant => plant);
+  }
 
   
   /*----- Helper Functions -----*/
@@ -65,5 +72,6 @@ export default {
     index,
     addPlant,
     matchPlants,
-    removePlant
+    removePlant,
+    getPlant
 }
