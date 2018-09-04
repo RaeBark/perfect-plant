@@ -7,10 +7,14 @@ Take a quiz to figure out what plants best fit your lifestyle and then, go buy t
 
 ****
 ## Technologies Used:
+* HTML
+* CSS
 * React 
 * Mongo DB
 * Express
 * Node
+* Google Fonts
+* Imgur
 
 ## Getting Started 
 Trello Board: [Perfect Plant Trello](https://trello.com/b/ToW5SFyz/perfectplant)
