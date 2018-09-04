@@ -17,3 +17,9 @@
 .PlantsPage-NoPlants {
     margin: 0 auto;
 }
+
+.PlantsPage {
+    background-image: url("https://i.imgur.com/TiYKIfG.png");
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+}
