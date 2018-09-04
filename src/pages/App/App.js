@@ -70,7 +70,7 @@ class App extends Component {
     this.setState({plant});
     this.props.history.push(`/plants/${plant._id}`);
   }
-
+ 
   clearSearchedFlag = () => {
     if (this.state.searched) this.setState({searched: false});
   }

@@ -1,3 +1,13 @@
 QuizPage {
     height:100vh;
 }
+
+.QuizPage button {
+    color: white;
+    background: #3A6D6E;
+}
+
+.QuizPage button:hover {
+    background: white;
+    color: #3A6D6E;
+}

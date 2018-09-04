@@ -13,7 +13,8 @@ var plantSchema = new Schema ({
     size: {type: String, enum: ['small', 'medium', 'large']},
     moisture: {type: String, enum: ['low', 'medium', 'high']},
     humidity: {type: String, enum: ['dry', 'normal', 'humid']},
-    expertiseLevel: {type: String, enum: ['beginner', 'intermediate', 'expert']}
+    expertiseLevel: {type: String, enum: ['beginner', 'intermediate', 'expert']},
+    plantOrigins: String
 }); 
 
 module.exports = mongoose.model('Plant', plantSchema);

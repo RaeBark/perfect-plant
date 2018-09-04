@@ -1,0 +1,13 @@
+.LoginForm {
+    width: 30vw;
+    margin: 60px auto;
+}
+
+.LoginForm header {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.LoginForm a {
+   color: white 
+}

@@ -45,7 +45,7 @@ class QuizPage extends Component {
 
     handleCheckQuiz = () => {
         if (!this.state.moisture || !this.state.sunlight || !this.state.maintenance|| !this.state.size|| !this.state.humidity|| !this.state.expertiseLevel) {
-            return "Please complete the quiz!";
+            return "please complete the quiz!";
         } else {
             return 'find my Perfect Plant!'
         }
@@ -68,7 +68,6 @@ class QuizPage extends Component {
         ]
         return (
             <div className="QuizPage">
-                <h1>Quiz</h1>
                 {steps[this.state.quizStep]}
                 <br/>
                 <br/>
@@ -76,10 +75,10 @@ class QuizPage extends Component {
                 <br/>
                 <br/>
                 {this.state.quizStep !== 0 ?
-                <button className="btn-success btn-lg" onClick={this.handleBackButton}>back</button> : ''}
+                <button className="btn-lg" onClick={this.handleBackButton}>back</button> : ''}
                 {this.state.quizStep === 2 ?
-                <button onClick={this.handleSearchButton} disabled={!this.state.moisture || !this.state.sunlight || !this.state.maintenance|| !this.state.size|| !this.state.humidity|| !this.state.expertiseLevel}>{this.handleCheckQuiz()}</button> :
-                <button className="btn-success btn-lg" onClick={this.handleNextButton}>next</button> }
+                <button className="btn-lg" onClick={this.handleSearchButton} disabled={!this.state.moisture || !this.state.sunlight || !this.state.maintenance|| !this.state.size|| !this.state.humidity|| !this.state.expertiseLevel}>{this.handleCheckQuiz()}</button> :
+                <button className="btn-lg" onClick={this.handleNextButton}>next</button> }
                 <br/>
 
             </div>

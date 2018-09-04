@@ -1,5 +1,21 @@
 .Plant{
-    background-color: rgb(139, 204, 139);
+    background-color: rgba(58, 109, 110, 0.46);
     width: 40%;
     margin: 20px auto;
+}
+
+.Plant-Details-Button {
+    background: none;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+
+.Plant-Details-Button:hover {
+    text-decoration: underline;
+}
+
+.Plant-Cart-Button {
+    color: #3A6D6E;
+    background: white;
 }

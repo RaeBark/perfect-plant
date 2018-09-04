@@ -19,7 +19,7 @@ class Step3 extends React.Component {
 
         return (
             <React.Fragment>
-            <h1>Step 3</h1>
+            <br/><br/><br/>
             <h2>question 5 of 6: what size plant do you want?</h2>
             <div className="row">
                 <div style={this.props.size === "small" ? clickedStyle : null} className="Step3-Options hvr-float-shadow col" onClick={() => this.props.handleSelection('size', 'small')}>
@@ -35,9 +35,7 @@ class Step3 extends React.Component {
                     <label>large</label>
                 </div>
             </div>
-            
-
-
+            <br/><br/><br/>
             <h2>question 6 of 6: what is your plant care level of expertise?</h2>
             <div className="row">
                 <div style={this.props.expertiseLevel === "beginner" ? clickedStyle : null} className="Step3-Options hvr-float-shadow col" onClick={() => this.props.handleSelection('expertiseLevel', 'beginner')}>

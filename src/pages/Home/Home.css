@@ -1,11 +1,11 @@
 .Home-Quiz-Button {
-    background-color: #89A788;
-    padding: 43px;
+    background-color: #3A6D6E;
+    padding: 65px;
     border-radius: 5px;
+    color: white;
 }
 
 .Home {
-    height: 100vh;
     text-align: center;
     color: white;
 }
@@ -18,4 +18,13 @@
     font-family: 'Yellowtail', cursive;
     font-size: 100px;
     text-shadow: 2px 2px 2px #3A6D6E;
+}
+
+.Home a {
+    color: white;
+    font-size: 25px;
+}
+
+.Home a:hover {
+    color: white;
 }

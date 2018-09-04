@@ -20,7 +20,7 @@ class Step2 extends React.Component {
         };
         return (
             <React.Fragment>
-                <h1>Step 2</h1>
+                <br/><br/><br/>
                 <h2>question 3 of 6: how often do you want to water your plant?</h2>
                 <div className="row">
                     <div className="Step2-Options hvr-float-shadow col" 
@@ -43,7 +43,7 @@ class Step2 extends React.Component {
                         <img src="https://uploads-ssl.webflow.com/5b12fa7893e3456284a17faa/5b12fa7893e345c34da18009_water-drop.png" alt="" style={{width:100, height:100}}/><br/>
                         <label>once or more a week</label>
                     </div>
-                </div>
+                </div><br/><br/><br/>
                     <h2>question 4 of 6: what is the humidty like where you live?</h2>
                 <div className="row">
                     <div style={this.props.humidity === "dry" ? clickedStyle : null} className="Step2-Options hvr-float-shadow col" onClick={() => this.props.handleSelection('humidity', 'dry')}>

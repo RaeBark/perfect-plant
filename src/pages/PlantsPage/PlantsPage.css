@@ -3,3 +3,17 @@
     flex-wrap: wrap; 
     width: 100%;
 }
+
+.PlantsPage a{
+    color: white;
+    margin: 0 auto;
+    
+}
+
+.PlantsPage-Link {
+    margin: 0 auto;
+}
+
+.PlantsPage-NoPlants {
+    margin: 0 auto;
+}

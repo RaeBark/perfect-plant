@@ -1,0 +1,28 @@
+.ShowPlantPage h3 {
+    text-transform: uppercase;
+    font-style: italic;
+
+}
+
+.ShowPlantPage-description {
+    width: 65vw;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.ShowPlantPage h1{
+    text-decoration: underline;
+}
+
+.ShowPlantPage {
+    background: rgba(58, 109, 110, 0.46);
+    width: 72vw;
+    margin: 10px auto;
+}
+
+.ShowPlantPage button{
+    color: white;
+    background: #3A6D6E;
+    height: 7vh;
+    width: 10vw;
+}

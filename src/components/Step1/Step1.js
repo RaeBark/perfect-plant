@@ -17,7 +17,7 @@ class Step1 extends React.Component {
         };
         return (
             <React.Fragment>
-                <h1>Step 1</h1>
+                <br/><br/><br/>
                 <h2>question 1 of 6: what maintenance level would your plant be?</h2>
                 <div>
                     <div className="Step1 row">
@@ -40,9 +40,7 @@ class Step1 extends React.Component {
                         </div>
                     </div>
                     </div>
-                
-
-
+                    <br/><br/><br/>
                 <h2>question 2 of 6: how much sunlight exposure will your plant get?</h2>
                 <div className="row">
                     <div style={this.props.sunlight === "none" ? clickedStyle : null} className="Step1-Options Sunlight hvr-float-shadow col" onClick={() => this.props.handleSelection('sunlight', 'none')}>

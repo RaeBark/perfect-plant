@@ -1,4 +1,10 @@
 .Cart-Checkout-Button {
     padding: 20px;
-    background-color: palegoldenrod;
+    background-color: #3A6D6E;
+    color: white;
+    border-radius: 5px;
+}
+
+.Cart h3 {
+    margin-bottom: 50px;
 }

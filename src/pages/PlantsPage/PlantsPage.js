@@ -1,6 +1,7 @@
 import React from 'react';
 import Plant from '../../components/Plant/Plant';
 import './PlantsPage.css';
+import { Link } from 'react-router-dom';
 
 class PlantsPage extends React.Component {
 
@@ -10,25 +11,33 @@ class PlantsPage extends React.Component {
         var plants = this.props.searched ? this.props.filteredPlants : this.props.allPlants;
         var viewPlants = plants.map(plant => {
             return ( 
-                <Plant
-                    key={plant._id}
-                    {...this.props} 
-                    plant={plant}
-                    handleAddItem={this.props.handleAddItem}
-                    handleSelectedPlant={this.props.handleSelectedPlant}
-                /> 
+                <React.Fragment>
+                    <Plant
+                        key={plant._id}
+                        {...this.props} 
+                        plant={plant}
+                        handleAddItem={this.props.handleAddItem}
+                        handleSelectedPlant={this.props.handleSelectedPlant}
+                    /> 
+                </React.Fragment>
             );
         })
 
         return (
             <div className="PlantsPage">
-                <h1>Look at all those plants!</h1>
                 <div className="PlantsPage-Plants">
                     {this.props.searched && !this.props.filteredPlants.length ? 
-                        <h1>No plants match your search</h1>
+                        <div className="PlantsPage-NoPlants">
+                            <h1>No plants match your search...</h1>
+                            <h2><Link to="/">browse all plants or take the quiz again</Link></h2>
+                        </div>
                     : 
                         <React.Fragment>
                             {viewPlants}
+                            <br/><br/>
+                            <div classNAme="PlantsPage-Link">
+                                <h2><Link to="/">browse all plants or take the quiz again</Link></h2>
+                            </div>
                         </React.Fragment>
                     }
                 </div>

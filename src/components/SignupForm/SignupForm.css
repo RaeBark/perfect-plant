@@ -1,0 +1,13 @@
+.SignupForm {
+    width: 30vw;
+    margin: 60px auto;
+}
+
+.SignupForm header {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.SignupForm a {
+   color: white 
+}

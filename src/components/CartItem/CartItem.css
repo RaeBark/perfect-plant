@@ -1,5 +1,9 @@
 .CartItem{
-    background-color: rgb(139, 204, 139);
-    width: 40%;
+    background-color: rgba(58, 109, 110, 0.46);;
+    width: 30%;
     margin: 20px auto;
+}
+
+.CartItem button {
+    color: #3A6D6E;
 }
