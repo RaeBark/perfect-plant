@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 class PlantsPage extends React.Component {
 
     render() {
-        console.log('filtered plants: ', this.props.filteredPlants);
-        console.log('allPlants: ', this.props.allPlants)
         var plants = this.props.searched ? this.props.filteredPlants : this.props.allPlants;
         var viewPlants = plants.map(plant => {
             return ( 

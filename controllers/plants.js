@@ -1,15 +1,12 @@
 var Plant = require('../models/plant');
 var Order = require('../models/order');
 
-
-
 function index(req,res) {
     Plant.find({}, function(err, plants) {
         if(err) return res.status(400).json(err);
         res.json(plants);
     });
 }
-
 
 function addPlant(req, res) {
     Order.cartForUser(req.user._id, function (cart) {
@@ -46,7 +43,6 @@ function matchPlants (req, res) {
             p.size === req.body.size &&
             p.expertiseLevel === req.body.expertiseLevel 
         }) 
-        console.log(plants);
         return res.json(plants);
     })
 }
